@@ -5,28 +5,28 @@ import { Country } from '../../interfaces/pais.interface';
 @Component({
   selector: 'app-por-pais',
   templateUrl: './por-pais.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class PorPaisComponent {
-
-  termino: string= 'Hola Mundo';
+  termino: string = 'Hola Mundo';
   hayError: boolean = false;
-  paises : Country[] = [];
+  paises: Country[] = [];
 
-  constructor(private pais$: PaisService) { }
+  constructor(private pais$: PaisService) {}
 
-  buscar(){
+  buscar(termino: string) {
     this.hayError = false;
-    console.log(this.termino);
-    
-    this.pais$.buscarPais( this.termino )
-      .subscribe( (paises) => {
+    this.termino = termino;
+
+    this.pais$.buscarPais(this.termino).subscribe(
+      (paises) => {
         console.log(paises);
         this.paises = paises;
-      }, ( err ) => {
+      },
+      (err) => {
         this.hayError = true;
         this.paises = [];
-      } ) ;
+      }
+    );
   }
 }
