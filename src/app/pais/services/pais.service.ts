@@ -21,4 +21,9 @@ export class PaisService {
     const url = `${ this.apiURL }/capital/${ termino }`;
     return this.http$.get<Country[]>( url );
   }
+
+  getPaisPorAlpha(termino: string): Observable<Country>{
+    const url = `${ this.apiURL }/alpha/${ termino }`;
+    return this.http$.get<Country>( url );
+  }
 }
