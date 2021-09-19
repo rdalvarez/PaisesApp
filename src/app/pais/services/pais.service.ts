@@ -26,4 +26,10 @@ export class PaisService {
     const url = `${ this.apiURL }/alpha/${ termino }`;
     return this.http$.get<Country>( url );
   }
+
+  buscarRegion(region: string): Observable<Country[]> {
+    const url = `${ this.apiURL }/region/${ region }`;
+    return this.http$.get<Country[]>( url );
+    //https://restcountries.eu/rest/v2/region/{region}
+  }
 }
